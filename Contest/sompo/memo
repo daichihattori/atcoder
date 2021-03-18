@@ -1,0 +1,5 @@
+string -> int 
+sscanf(文字列,"%d",&数値);
+
+int -> string
+str_num=to_string(num) //10進数のみ？
