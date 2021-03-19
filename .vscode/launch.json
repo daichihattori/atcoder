@@ -1,33 +1,29 @@
 {
+    // IntelliSense を使用して利用可能な属性を学べます。
+    // 既存の属性の説明をホバーして表示します。
+    // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(gdb) Bash on Windows Launch",
+            "name": "g++ - アクティブ ファイルのビルドとデバッグ",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${command:extension.vscode-wsl-workspaceFolder}/problem.exe",
-            "args": ["<", "${command:extension.vscode-wsl-workspaceFolder}/problem.in"],
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
+            "args": ["<", "${fileDirname}/test/test1"],
             "stopAtEntry": false,
-            "cwd": "${command:extension.vscode-wsl-workspaceFolder}",
+            "cwd": "${workspaceFolder}",
             "environment": [],
-            "externalConsole": true,
-            "pipeTransport": {
-                "debuggerPath": "/usr/bin/gdb",
-                "pipeProgram": "${env:windir}\\system32\\bash.exe",
-                "pipeArgs": ["-c"],
-                "pipeCwd": "/"
-            },
+            "externalConsole": false,
+            "MIMode": "gdb",
             "setupCommands": [
                 {
-                    "description": "Enable pretty-printing for gdb",
+                    "description": "gdb の再フォーマットを有効にする",
                     "text": "-enable-pretty-printing",
                     "ignoreFailures": true
                 }
             ],
-            "sourceFileMap": {
-                "${command:extension.vscode-wsl-workspaceFolder}": "${workspaceFolder}"
-            },
-
+            "preLaunchTask": "C/C++: g++ アクティブなファイルのビルド",
+            "miDebuggerPath": "/usr/bin/gdb"
         }
     ]
 }
