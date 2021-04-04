@@ -2,38 +2,38 @@
 using namespace std;
 int main(){
     int N,X,Y;
-    cin >> N >> X >> Y;
-    vector <string> cards_ini(N);
+    cin >> N;
+
+    vector <string> cards_init(N);
     vector <string> cards_goal(N);
 
     for(int i=0;i<N;i++){
-        cin >> cards_ini[i];
+        cin >> cards_init.at(i);
     }
     for(int i=0;i<N;i++){
-        cin >> cards_ini[i];
+        cin >> cards_goal.at(i);
     }
-    int cost=0;
-    int i=0;
-    while(1){
-        if(cards_ini[i]==cards_goal[i]){
-            if(cards_ini[i+1]==cards_goal[i+1]){
-            }else{
-                cards_ini[i+1]=cards_goal[i+1];
-                cost+=Y;
-            }
-        }else{
-            if(cards_ini[i+1]==cards_goal[i+1]){
-                cards_ini[i]=cards_goal[i];
-                cost+=Y;
-            }else{
-                cards_ini[i]=cards_goal[i];
-                cards_ini[i+1]=cards_goal[i+1];
-                cost+=X;
-            }
+
+    int cnt_init_R=0,cnt_goal_R=0;
+    for(int i=0;i<N;i++){
+        //if(cards_init.at(i)=="R") cnt_init_R++;
+        if(cards_goal.at(i)=="R") cnt_goal_R++;
+    }
+    int cost_buf;
+    vector <string> cards_buf;
+    vector <int> where_R(cnt_goal_R);
+    for(int i=0;i<cnt_goal_R;i++){
+        where_R.at(i)=i;
+    }
+
+    while(1){//列挙
+        for(int i=0;i<N;i++){
+            if(cards_buf.at(i)!=cards_goal.at(i)) cost_buf+=X;
         }
-        i=i+1;
-        if(i==N-1) break;
     }
-    cout << cost << endl;
+    //マルバツの数が同じものを作成
+
+
+
 
 }
